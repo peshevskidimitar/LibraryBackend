@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/countries")
-@CrossOrigin
+@RequestMapping("/api/countries")
+@CrossOrigin(origins = "http://localhost:3000")
 public class CountryRestController {
 
     private final CountryService countryService;
