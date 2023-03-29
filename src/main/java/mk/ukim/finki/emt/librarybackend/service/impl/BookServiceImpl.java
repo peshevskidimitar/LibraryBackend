@@ -73,7 +73,8 @@ public class BookServiceImpl implements BookService {
     public Optional<Book> borrow(Long id) {
         Book book = findById(id)
                 .orElseThrow(() -> new BookNotFoundException(id));
-        book.setAvailableCopies(book.getAvailableCopies() - 1);
+        if (book.getAvailableCopies() > 0)
+            book.setAvailableCopies(book.getAvailableCopies() - 1);
 
         return Optional.of(bookRepository.save(book));
     }
